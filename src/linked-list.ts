@@ -6,22 +6,42 @@ class ListNode<T> {
 
 class LinkedList<T> {
   private root?: ListNode<T>;
+  private tail?: ListNode<T>;
   private length = 0;
 
   add(value: T) {
     const node = new ListNode(value);
-    if (!this.root) {
+    if (!this.root || !this.tail) {
       this.root = node;
+      this.tail = node;
     } else {
-      let current = this.root;
-      while (current.next) {
-        current = current.next;
-      }
-      current.next = node;
+      this.tail.next = node;
+      this.tail = node;
     }
     this.length++;
   }
+
+  getNumberOfElements() {
+    return this.length;
+  }
+
+  print() {
+    let current = this.root;
+    while (current) {
+      console.log(current.value);
+      current = current.next;
+    }
+  }
 }
+
+const numberList = new LinkedList<number>();
+
+numberList.add(7);
+numberList.add(-3);
+numberList.add(10);
+
+console.log(numberList.getNumberOfElements());
+numberList.print();
 
 const list = new LinkedList<number>();
 const nameList = new LinkedList<string>();
