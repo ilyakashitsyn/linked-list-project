@@ -5,9 +5,9 @@ class ListNode<T> {
 }
 
 class LinkedList<T> {
-  private root?: ListNode<T>;
-  private tail?: ListNode<T>;
-  private length = 0;
+  private root?: ListNode<T>; // Первый элемент (начало)
+  private tail?: ListNode<T>; // Последний элемент (хвост)
+  private length = 0; // Кол-во элементов
 
   add(value: T) {
     const node = new ListNode(value);
